@@ -1,4 +1,4 @@
-const express = 'express'
+const express = require('express')
 const ProductController = require('../../controllers/product')
 // import filesMiddleware from '../../middlewares/files'
 // import imagesMiddleware from '../../middlewares/images'
@@ -9,7 +9,7 @@ router.get('/', ProductController.getProducts.handler)
 
 // router.get('/favorite', ProductController.getFavoriteProducts.middleware, ProductController.getFavoriteProducts.handler)
 
-router.get('/:id', ProductController.getOneProduct.handler)
+// router.get('/:id', ProductController.getOneProduct.handler)
 
 // router.put('/', ProductController.updateProduct.middleware, ProductController.updateProduct.handler)
 

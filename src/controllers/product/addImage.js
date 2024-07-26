@@ -1,7 +1,7 @@
 const yup = require('yup')
 const { SendError, SendResponse } = require('../../helpers')
 const { controllerWrapper, validation } = require('../../middlewares')
-const ProductService = require('../../services/ProductServices')
+const ProductService = require('../../services/ProductService')
 const imagekit = require('../../utils/imagekitUploader')
 
 const schema = yup.object().shape({

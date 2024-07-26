@@ -1,6 +1,6 @@
 const { SendResponse } = require('../../helpers')
 const { controllerWrapper } = require('../../middlewares')
-const ProductService = require('../../services/ProductServices')
+const ProductService = require('../../services/ProductService')
 
 const getProducts = async (req, res) => {
     const { search, filter, category, subcategory, limit, userId } = req.query

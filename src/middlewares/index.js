@@ -1,4 +1,4 @@
-import controllerWrapper from './controllerWrapper'
-import validation from './validation'
+const controllerWrapper = require('./controllerWrapper')
+const validation = require('./validation')
 
-export { controllerWrapper, validation }
+module.exports = { controllerWrapper, validation }

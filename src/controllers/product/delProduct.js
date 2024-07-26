@@ -1,9 +1,9 @@
 const { SendError, SendResponse } = require('../../helpers')
 const { controllerWrapper } = require('../../middlewares')
-const ProductService = require('../../services/ProductServices')
+const ProductService = require('../../services/ProductService')
 const imagekit = require('../../utils/imagekitUploader')
 
-const delImage = async (req, res) => {
+const delProduct = async (req, res) => {
     const { id } = req.params
     const productDB = await ProductService.findProductById(id)
 
@@ -19,5 +19,5 @@ const delImage = async (req, res) => {
 }
 
 module.exports = {
-    handler: controllerWrapper(delImage),
+    handler: controllerWrapper(delProduct),
 }

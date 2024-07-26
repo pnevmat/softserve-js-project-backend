@@ -1,7 +1,7 @@
 const yup = require('yup')
 const { SendError, SendResponse } = require('../../helpers')
 const { controllerWrapper, validation } = require('../../middlewares')
-const ProductService = require('../../services/ProductServices')
+const ProductService = require('../../services/ProductService')
 
 // id: '1',
 // name: 'Crater-G',
@@ -75,8 +75,8 @@ const schema = yup.object().shape({
     feature: yup.string().required(),
     material: yup.string().required(),
     pattern: yup.string().required(),
-    theme: yup.string.required(),
-    accent: yup.string.required(),
+    theme: yup.string().required(),
+    accent: yup.string().required(),
     description: yup.array().of(yup.string().required()),
 })
 
