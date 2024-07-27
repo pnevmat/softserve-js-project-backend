@@ -5,6 +5,7 @@ const delProduct = require('./delProduct')
 const getProducts = require('./getProducts')
 const updateImage = require('./updateImage')
 const updateProduct = require('./updateProduct')
+const getOneProduct = require('./getOneProduct')
 
 module.exports = {
     addImage,
@@ -14,4 +15,5 @@ module.exports = {
     getProducts,
     updateImage,
     updateProduct,
+    getOneProduct,
 }

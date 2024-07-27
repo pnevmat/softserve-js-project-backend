@@ -48,36 +48,38 @@ const ProductService = require('../../services/ProductService')
 // ]
 
 const schema = yup.object().shape({
-    name: yup.string().required(),
-    brand: yup.string().required(),
-    price: yup.number().required(),
-    inStock: yup.number().required(),
-    category: yup.string().required(),
-    subcategory: yup.string(),
-    subsubcategory: yup.number().required(),
-    size: yup.array().of(
-        yup.object().shape({
-            size: yup.string().required(),
-        }),
-    ),
-    width: yup.array().of(
-        yup.object().shape({
-            width: yup.string().required(),
-        }),
-    ),
-    color: yup.array().of(
-        yup.object().shape({
-            color: yup.string().required(),
-        }),
-    ),
-    style: yup.string().required(),
-    occasion: yup.string().required(),
-    feature: yup.string().required(),
-    material: yup.string().required(),
-    pattern: yup.string().required(),
-    theme: yup.string().required(),
-    accent: yup.string().required(),
-    description: yup.array().of(yup.string().required()),
+    product: yup.object().shape({
+        name: yup.string().required(),
+        brand: yup.string().required(),
+        price: yup.number().required(),
+        inStock: yup.number().required(),
+        category: yup.string().required(),
+        subcategory: yup.string(),
+        subsubcategory: yup.string().required(),
+        size: yup.array().of(
+            yup.object().shape({
+                size: yup.string().required(),
+            }),
+        ),
+        width: yup.array().of(
+            yup.object().shape({
+                width: yup.string().required(),
+            }),
+        ),
+        color: yup.array().of(
+            yup.object().shape({
+                color: yup.string().required(),
+            }),
+        ),
+        style: yup.string().required(),
+        occasion: yup.string().required(),
+        feature: yup.string().required(),
+        material: yup.string().required(),
+        pattern: yup.string().required(),
+        theme: yup.string().required(),
+        accent: yup.string().required(),
+        description: yup.array().of(yup.string().required()),
+    }),
 })
 
 const addProduct = async (req, res) => {
@@ -85,7 +87,7 @@ const addProduct = async (req, res) => {
 
     if (!product) return SendError.BAD_REQUEST(res, 'Помилка додавання')
 
-    await ProductService.createProducts(product)
+    await ProductService.createProduct(product)
 
     return SendResponse.OK(res, 'Продукт додано', {})
 }

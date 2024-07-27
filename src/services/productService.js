@@ -4,8 +4,8 @@ const { generateRandomNumbers } = require('../utils/utils')
 
 const productService = {
     createProduct: async fields => {
-        const user = await ProductModel.create(fields)
-        return user
+        const product = await ProductModel.create(fields)
+        return product
     },
 
     findProductById: async id => {
@@ -18,12 +18,14 @@ const productService = {
     },
 
     updateProductImage: async (product, image, main) => {
-        if (!product.imgSet) product.pictures = []
-        if (main) product.pictures.unshift(image)
-        else product.pictures.push(image)
-        product.pictures = product.pictures.filter(p => p.url.length > 0)
+        if (main === 'true') product.img = image
+        if (!product.imgSet) product.imgSet = []
+        if (main === 'false') product.imgSet = [...product.imgSet, image]
+
+        product.imgSet = product.imgSet.filter(p => p.url.length > 0)
+
         await product.save()
-        return await product.getPublicInfo()
+        return await product
     },
 
     delImage: async (product, imageUrl) => {
@@ -32,10 +34,16 @@ const productService = {
         return await product.getPublicInfo()
     },
 
+    getProduct: async id => {
+        const productDB = await ProductModel.findById(id)
+        const product = await Promise.resolve(productDB)
+        return product
+    },
+
     getProducts: async () => {
         const productsDB = await ProductModel.find()
-        const promise = productsDB.map(async p => await p.getPublicInfo())
-        const products = await Promise.all(promise)
+        // const promise = productsDB.map(async p => await p.getPublicInfo())
+        const products = await Promise.all(productsDB)
         return products
     },
 

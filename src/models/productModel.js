@@ -1,4 +1,4 @@
-const { Schema, model, SchemaTypes } = require('mongoose')
+const { Schema, model } = require('mongoose')
 
 // name,
 // brand,
@@ -92,6 +92,12 @@ const productSchema = new Schema(
         description: {
             type: Array,
             required: true,
+        },
+        img: {
+            type: Object,
+        },
+        imgSet: {
+            type: Array,
         },
     },
     {
